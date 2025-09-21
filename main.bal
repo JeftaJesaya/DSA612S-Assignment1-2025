@@ -1,7 +1,7 @@
 import ballerina/io;
 
 public function main() returns error? {
-    io:println("🚗 Car Rental System - SUBMISSION READY");
+    io:println(" Car Rental System - SUBMISSION READY");
     io:println("=======================================");
     
     // Initialize sample data
@@ -17,14 +17,14 @@ public function main() returns error? {
     string choice = io:readln("Enter your choice (1-4): ");
     
     if choice == "1" {
-        io:println("🚀 Starting Service Server on port 9090...");
-        io:println("✅ HTTP Service 'CarRentalService' is running");
-        io:println("📡 Server listening on http://localhost:9090");
-        io:println("🔧 Use option 2 in another terminal to test client");
-        io:println("⏹️  Press Ctrl+C to stop the server");
+        io:println("Starting Service Server on port 9090...");
+        io:println(" HTTP Service 'CarRentalService' is running");
+        io:println(" Server listening on http://localhost:9090");
+        io:println(" Use option 2 in another terminal to test client");
+        io:println(" Press Ctrl+C to stop the server");
         
         // Display available operations
-        io:println("\n📋 Available Service Operations:");
+        io:println("\n Available Service Operations:");
         io:println("   • POST /grpcService/addCar - Admin adds new car");
         io:println("   • POST /grpcService/createUsers - Create multiple users");
         io:println("   • PUT /grpcService/updateCar - Admin updates car details");
@@ -61,7 +61,7 @@ public function main() returns error? {
 }
 
 function runDemoMode() {
-    io:println("\n🚀 Running Local Demo Mode");
+    io:println("\n Running Local Demo Mode");
     io:println("==========================");
     
     // Test AddCar
@@ -76,7 +76,7 @@ function runDemoMode() {
     };
     CarResponse addResult = addCar(addReq);
     string addMessage = addResult.message;
-    io:println("✅ AddCar: " + addMessage);
+    io:println(" AddCar: " + addMessage);
     
     // Test CreateUsers
     User[] newUsers = [
@@ -87,13 +87,13 @@ function runDemoMode() {
     CreateUsersResponse usersResult = createUsers(usersReq);
     string usersMessage = usersResult.message;
     int usersCreated = usersResult.usersCreated;
-    io:println("✅ CreateUsers: " + usersMessage + " (" + usersCreated.toString() + " users)");
+    io:println(" CreateUsers: " + usersMessage + " (" + usersCreated.toString() + " users)");
     
     // Test SearchCar
     PlateRequest searchReq = {plate: "TESLA01"};
     CarResponse searchResult = searchCar(searchReq);
     string searchMessage = searchResult.message;
-    io:println("✅ SearchCar: " + searchMessage);
+    io:println(" SearchCar: " + searchMessage);
     
     // Test ListAvailableCars
     FilterRequest filterReq = {keyword: "Tesla", year: ()};
@@ -101,7 +101,7 @@ function runDemoMode() {
     Car[] availableCars = listResult.cars;
     string listMessage = listResult.message;
     int availableCount = availableCars.length();
-    io:println("✅ ListAvailableCars: " + listMessage + " (" + availableCount.toString() + " cars)");
+    io:println(" ListAvailableCars: " + listMessage + " (" + availableCount.toString() + " cars)");
     
     // Test AddToCart
     CartItem cartItem = {
@@ -112,15 +112,15 @@ function runDemoMode() {
     };
     CartResponse cartResult = addToCart(cartItem);
     string cartMessage = cartResult.message;
-    io:println("✅ AddToCart: " + cartMessage);
+    io:println(" AddToCart: " + cartMessage);
     
     // Test PlaceReservation
     ReservationRequest reservationReq = {userId: "demo_customer"};
     ReservationResponse reservationResult = placeReservation(reservationReq);
     string reservationMessage = reservationResult.message;
     float totalPrice = reservationResult.totalPrice;
-    io:println("✅ PlaceReservation: " + reservationMessage);
-    io:println("💰 Total Price: $" + totalPrice.toString());
+    io:println(" PlaceReservation: " + reservationMessage);
+    io:println(" Total Price: $" + totalPrice.toString());
     
     // Test UpdateCar
     UpdateCarRequest updateReq = {
@@ -134,7 +134,7 @@ function runDemoMode() {
     };
     CarResponse updateResult = updateCar(updateReq);
     string updateMessage = updateResult.message;
-    io:println("✅ UpdateCar: " + updateMessage);
+    io:println(" UpdateCar: " + updateMessage);
     
     // Test RemoveCar
     PlateRequest removeReq = {plate: "XYZ789"};
@@ -142,17 +142,17 @@ function runDemoMode() {
     string removeMessage = removeResult.message;
     Car[] remainingCars = removeResult.remainingCars;
     int remainingCount = remainingCars.length();
-    io:println("✅ RemoveCar: " + removeMessage + " (" + remainingCount.toString() + " remaining)");
+    io:println(" RemoveCar: " + removeMessage + " (" + remainingCount.toString() + " remaining)");
     
     // Show system status
-    io:println("\n📊 System Status:");
+    io:println("\n System Status:");
     io:println(getStorageInfo());
     
-    io:println("\n🎉 SUBMISSION READY - All Features Working!");
-    io:println("✅ Service Contract: Defined with 8 operations");
-    io:println("✅ HTTP Server Implementation: Complete with all resource functions");
-    io:println("✅ HTTP Client Implementation: Complete with all operations");
-    io:println("✅ All Required Operations: Tested and working");
-    io:println("✅ Admin Operations: add_car, create_users, update_car, remove_car");
-    io:println("✅ Customer Operations: list_available_cars, search_car, add_to_cart, place_reservation");
+    io:println("\n SUBMISSION READY - All Features Working!");
+    io:println(" Service Contract: Defined with 8 operations");
+    io:println(" HTTP Server Implementation: Complete with all resource functions");
+    io:println(" HTTP Client Implementation: Complete with all operations");
+    io:println(" All Required Operations: Tested and working");
+    io:println(" Admin Operations: add_car, create_users, update_car, remove_car");
+    io:println(" Customer Operations: list_available_cars, search_car, add_to_cart, place_reservation");
 }
