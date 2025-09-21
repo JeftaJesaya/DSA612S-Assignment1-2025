@@ -4,7 +4,7 @@ import ballerina/io;
 http:Client carRentalClient = check new ("http://localhost:8080");
 
 public function runHttpClientDemo() returns error? {
-    io:println("🚀 Starting HTTP Client Demo");
+    io:println("Starting HTTP Client Demo");
     io:println("============================");
     
     // Test AddCar
@@ -44,8 +44,8 @@ public function runHttpClientDemo() returns error? {
     ReservationResponse resResult = check carRentalClient->/carRental/placeReservation.post(resReq);
     string resMessage = resResult.message;
     float totalPrice = resResult.totalPrice;
-    io:println("✅ HTTP PlaceReservation: " + resMessage);
-    io:println("💰 Total Price: $" + totalPrice.toString());
+    io:println(" HTTP PlaceReservation: " + resMessage);
+    io:println(" Total Price: $" + totalPrice.toString());
 
     // Test CreateUsers
     User[] newUsers = [
@@ -57,15 +57,15 @@ public function runHttpClientDemo() returns error? {
     CreateUsersResponse streamResult = check carRentalClient->/carRental/createUsers.post(streamReq);
     string streamMessage = streamResult.message;
     int usersCreated = streamResult.usersCreated;
-    io:println("✅ HTTP CreateUsers: " + streamMessage);
-    io:println("👥 Users Created: " + usersCreated.toString());
+    io:println(" HTTP CreateUsers: " + streamMessage);
+    io:println(" Users Created: " + usersCreated.toString());
 
     // Test ListAvailableCars
     ListCarsResponse listResult = check carRentalClient->/carRental/listAvailableCars.get(keyword = "BMW");
     Car[] availableCars = listResult.cars;
     string listMessage = listResult.message;
-    io:println("✅ HTTP ListAvailableCars: " + listMessage);
-    io:println("🚗 Available Cars Found: " + availableCars.length().toString());
+    io:println(" HTTP ListAvailableCars: " + listMessage);
+    io:println(" Available Cars Found: " + availableCars.length().toString());
 
     // Test UpdateCar
     UpdateCarRequest updateReq = {
@@ -87,11 +87,12 @@ public function runHttpClientDemo() returns error? {
     string removeMessage = removeResult.message;
     Car[] remainingCars = removeResult.remainingCars;
     int remainingCount = remainingCars.length();
-    io:println("✅ HTTP RemoveCar: " + removeMessage);
-    io:println("🚗 Remaining Cars: " + remainingCount.toString());
+    io:println(" HTTP RemoveCar: " + removeMessage);
+    io:println(" Remaining Cars: " + remainingCount.toString());
 
-    io:println("\n🎉 HTTP Client Demo Completed!");
-    io:println("📝 All HTTP operations completed successfully");
+    io:println("\n HTTP Client Demo Completed!");
+    io:println(" All HTTP operations completed successfully");
     
     return ();
 }
+
